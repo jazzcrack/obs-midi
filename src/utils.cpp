@@ -185,8 +185,8 @@ obs_data_t *Utils::GetSceneItemData(obs_sceneitem_t *item)
 	obs_data_set_bool(data, "muted", obs_source_muted(itemSource));
 	obs_data_set_int(data, "alignment",
 			 (int)obs_sceneitem_get_alignment(item));
-	obs_data_set_double(data, "cx", item_width * scale.x);
-	obs_data_set_double(data, "cy", item_height * scale.y);
+	obs_data_set_double(data, "cx", item_width  * (float)scale.x);
+	obs_data_set_double(data, "cy", item_height * (float)scale.y);
 	obs_data_set_bool(data, "render", obs_sceneitem_visible(item));
 	obs_data_set_bool(data, "locked", obs_sceneitem_locked(item));
 
@@ -895,8 +895,8 @@ obs_data_t *Utils::GetSceneItemPropertiesData(obs_sceneitem_t *sceneItem)
 
 	obs_data_set_int(data, "sourceWidth", baseSourceWidth);
 	obs_data_set_int(data, "sourceHeight", baseSourceHeight);
-	obs_data_set_double(data, "width", baseSourceWidth * scale.x);
-	obs_data_set_double(data, "height", baseSourceHeight * scale.y);
+	obs_data_set_double(data, "width",  baseSourceWidth * (uint32_t) scale.x);
+	obs_data_set_double(data, "height", baseSourceHeight * (uint32_t) scale.y);
 
 	obs_scene_t *parent = obs_sceneitem_get_scene(sceneItem);
 	if (parent) {
